@@ -1,0 +1,18 @@
+uuid: 029bfa9c-9256-4efd-8d57-54dbab919bfd
+langcode: pt-br
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Resposta
+type: resposta
+description: null
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

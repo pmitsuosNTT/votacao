@@ -1,0 +1,29 @@
+uuid: 39c9cb3d-d486-4229-918d-afb6edd4ff56
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.field.node.voto.body
+    - node.type.voto
+  module:
+    - text
+    - user
+id: node.voto.default
+targetEntityType: node
+bundle: voto
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

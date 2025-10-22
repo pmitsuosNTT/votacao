@@ -1,0 +1,18 @@
+uuid: bcc45c7b-b64b-4136-b3c1-034eb5c7a339
+langcode: pt-br
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Pergunta
+type: pergunta
+description: null
+help: null
+new_revision: true
+preview_mode: 1
+display_submitted: true

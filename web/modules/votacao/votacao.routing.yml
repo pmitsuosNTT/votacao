@@ -1,0 +1,59 @@
+votacao.vote_form:
+  path: '/votacao/{vote_question}/vote'
+  defaults:
+    _form: '\Drupal\votacao\Form\VoteCastForm'
+    _title: 'Vote'
+  requirements:
+    _permission: 'cast vote'
+  options:
+    parameters:
+      vote_question:
+        type: entity:vote_question
+
+# endpoints
+votacao.api.questions:
+  path: '/api/v1/questions'
+  defaults:
+    _controller: '\Drupal\votacao\Controller\ApiController::listQuestions'
+    _format: 'json'
+  methods: [GET]
+  requirements:
+    _access: 'TRUE'
+
+votacao.api.question_show:
+  path: '/api/v1/questions/{uuid}'
+  defaults:
+    _controller: '\Drupal\votacao\Controller\ApiController::showQuestion'
+    _format: 'json'
+  methods: [GET]
+  requirements:
+    _access: 'TRUE'
+
+votacao.api.question_vote:
+  path: '/api/v1/questions/{uuid}/vote'
+  defaults:
+    _controller: '\Drupal\votacao\Controller\ApiController::castVote'
+    _format: 'json'
+  methods: [POST]
+  requirements:
+    _access: 'TRUE'
+
+votacao.api.question_results:
+  path: '/api/v1/questions/{uuid}/results'
+  defaults:
+    _controller: '\Drupal\votacao\Controller\ApiController::results'
+    _format: 'json'
+  methods: [GET]
+  requirements:
+    _access: 'TRUE'
+
+#module settings
+votacao.settings:
+  path: '/admin/config/system/votacao'
+  defaults:
+    _form: '\Drupal\votacao\Form\VotacaoSettingsForm'
+    _title: 'Voting settings'
+  requirements:
+    _permission: 'administer voting'
+  options:
+    _admin_route: TRUE

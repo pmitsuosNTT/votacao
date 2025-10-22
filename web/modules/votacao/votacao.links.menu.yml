@@ -1,0 +1,5 @@
+votacao.settings:
+  title: 'Voting settings'
+  description: 'Global voting toggle and API key'
+  route_name: votacao.settings
+  parent: system.admin_config_system

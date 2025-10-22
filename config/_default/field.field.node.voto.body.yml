@@ -1,0 +1,24 @@
+uuid: 7ceaf824-91bc-4adb-87c2-6ad7c649b4a7
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.voto
+  module:
+    - text
+id: node.voto.body
+field_name: body
+entity_type: node
+bundle: voto
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

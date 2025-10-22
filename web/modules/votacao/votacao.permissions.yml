@@ -1,0 +1,6 @@
+administer voting:
+  title: 'Administer voting'
+  restrict access: true
+
+cast vote:
+  title: 'Cast vote'

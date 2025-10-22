@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "8d5e941e-70a6-45d3-adf1-53d0b54daa48",
+		"name": "votacao api",
+		"description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49445705",
+		"_collection_link": "https://pmitsuos-3485447.postman.co/workspace/Pedro's-Workspace~4b719153-ecee-4f86-8b18-68182b767071/collection/49445705-8d5e941e-70a6-45d3-adf1-53d0b54daa48?action=share&source=collection_link&creator=49445705"
+	},
+	"item": [
+		{
+			"name": "Listar questões",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-Key",
+						"value": "123456"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:54639/api/v1/questions",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "54639",
+					"path": [
+						"api",
+						"v1",
+						"questions"
+					]
+				},
+				"description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+			},
+			"response": []
+		},
+		{
+			"name": "Votar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-API-Key",
+						"value": "123456"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"answer_id\": 12}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:54639/api/v1/questions/5e25cc6c-f32f-481d-a1b9-e24be6bf16df/vote",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "54639",
+					"path": [
+						"api",
+						"v1",
+						"questions",
+						"5e25cc6c-f32f-481d-a1b9-e24be6bf16df",
+						"vote"
+					]
+				},
+				"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar questão por uuid",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-Key",
+						"value": "123456"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:54639/api/v1/questions/5e25cc6c-f32f-481d-a1b9-e24be6bf16df",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "54639",
+					"path": [
+						"api",
+						"v1",
+						"questions",
+						"5e25cc6c-f32f-481d-a1b9-e24be6bf16df"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pegar resultados",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-API-Key",
+						"value": "123456"
+					}
+				],
+				"url": {
+					"raw": "https://localhost:54639/api/v1/questions/450e6ec4-9589-4bc2-bd17-eacf78850061/results",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "54639",
+					"path": [
+						"api",
+						"v1",
+						"questions",
+						"450e6ec4-9589-4bc2-bd17-eacf78850061",
+						"results"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Voto duplicado",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

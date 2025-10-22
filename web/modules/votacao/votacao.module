@@ -1,0 +1,9 @@
+<?php
+
+use Drupal\Core\Entity\EntityInterface;
+
+
+
+function votacao_hook_form($node, &$form_state) {
+
+}

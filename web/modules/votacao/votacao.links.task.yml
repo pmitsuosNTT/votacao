@@ -1,0 +1,9 @@
+votacao.questions_tab:
+  route_name: entity.vote_question.collection
+  title: 'Voting Questions'
+  base_route: system.admin_content
+
+votacao.answers_tab:
+  route_name: entity.vote_answer.collection
+  title: 'Voting Answers'
+  base_route: system.admin_content

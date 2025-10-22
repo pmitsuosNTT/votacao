@@ -1,0 +1,24 @@
+uuid: 3f84d787-d26e-4ba9-a689-7d0902b4d5e1
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.pergunta
+  module:
+    - text
+id: node.pergunta.body
+field_name: body
+entity_type: node
+bundle: pergunta
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

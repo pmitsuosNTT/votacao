@@ -1,0 +1,29 @@
+uuid: c22f475d-196b-4e7d-a43a-6206838b1aed
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.field.node.resposta.body
+    - node.type.resposta
+  module:
+    - text
+    - user
+id: node.resposta.default
+targetEntityType: node
+bundle: resposta
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  langcode: true

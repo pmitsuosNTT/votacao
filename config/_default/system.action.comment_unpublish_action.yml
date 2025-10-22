@@ -1,0 +1,13 @@
+uuid: 526477a1-b60b-449d-95d7-9506971ec89c
+langcode: pt-br
+status: true
+dependencies:
+  module:
+    - comment
+_core:
+  default_config_hash: tWOIjSMobEWOFZddMkNqb9JySbOVwE1diC6NRqcfLTk
+id: comment_unpublish_action
+label: 'Despublicar comentário'
+type: comment
+plugin: 'entity:unpublish_action:comment'
+configuration: {  }

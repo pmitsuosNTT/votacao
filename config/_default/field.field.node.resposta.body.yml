@@ -1,0 +1,24 @@
+uuid: 1f47e45c-1839-4031-bcc9-e1c964818572
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.resposta
+  module:
+    - text
+id: node.resposta.body
+field_name: body
+entity_type: node
+bundle: resposta
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+  allowed_formats: {  }
+field_type: text_with_summary

@@ -1,0 +1,11 @@
+votacao.question_add:
+  route_name: entity.vote_question.add_form
+  title: 'Add Question'
+  appears_on:
+    - entity.vote_question.collection
+
+votacao.answer_add:
+  route_name: entity.vote_answer.add_form
+  title: 'Add Answer'
+  appears_on:
+    - entity.vote_answer.collection

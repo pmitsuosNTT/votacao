@@ -1,0 +1,11 @@
+name: "Votação"
+type: module
+description: "Sistema de votação"
+core_version_requirement: ^10
+package: Custom
+dependencies:
+  - field
+  - user
+  - file
+  - image
+  - text

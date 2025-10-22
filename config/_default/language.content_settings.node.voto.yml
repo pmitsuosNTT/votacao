@@ -1,0 +1,11 @@
+uuid: ce1b8af5-adf5-4bec-95b6-1d97c0eda556
+langcode: pt-br
+status: true
+dependencies:
+  config:
+    - node.type.voto
+id: node.voto
+target_entity_type_id: node
+target_bundle: voto
+default_langcode: site_default
+language_alterable: false
