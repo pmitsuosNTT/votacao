@@ -125,7 +125,7 @@ class ApiController extends ControllerBase {
       return $this->jsonError('Invalid answer for this question', 400);
     }
 
-    // Identify user (anon = 0). NOTE: anon uniqueness is global uid=0.
+    // get user
     $uid = (int) $this->currentUser()->id();
 
     //duplicate check.
@@ -178,24 +178,40 @@ class ApiController extends ControllerBase {
       ->condition('question', (int) $q->id())
       ->accessCheck(FALSE)
       ->execute();
+
     if ($v_ids) {
       foreach ($v_storage->loadMultiple($v_ids) as $v) {
         $aid = (int) $v->get('answer')->target_id;
-        if (isset($counts[$aid])) $counts[$aid]++;
+        if (isset($counts[$aid])) {
+          $counts[$aid]++;
+        }
       }
     }
+
+    // Total published
+    $total_visible = array_sum($counts);
 
     $out = [];
     foreach ($answers as $a) {
       $aid = (int) $a->id();
-      $out[] = ['answer_id' => $aid, 'title' => $a->label(), 'votes' => (int) ($counts[$aid] ?? 0)];
+      $votes = (int) ($counts[$aid] ?? 0);
+      $percentage = $total_visible > 0 ? round(($votes / $total_visible) * 100, 1) : 0.0;
+
+      $out[] = [
+        'answer_id'  => $aid,
+        'title'      => $a->label(),
+        'votes'      => $votes,
+        'percentage' => $percentage, // e.g., 33.3
+      ];
     }
 
     return new JsonResponse([
-      'id'      => (int) $q->id(),
-      'uuid'    => $q->uuid(),
-      'label'   => $q->label(),
-      'results' => $out,
+      'id'          => (int) $q->id(),
+      'uuid'        => $q->uuid(),
+      'label'       => $q->label(),
+      'total_votes' => $total_visible,
+      'results'     => $out,
     ]);
   }
+
 }

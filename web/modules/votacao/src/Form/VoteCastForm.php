@@ -129,28 +129,40 @@ public function submitForm(array &$form, FormStateInterface $form_state): void {
 }
 
 
-  protected function buildResultsList(int $qid, array $answers): array {
-    $storage = $this->etm->getStorage('vote_vote');
-    $ids = $storage->getQuery()
-      ->condition('question', $qid)
-      ->accessCheck(FALSE)
-      ->execute();
+protected function buildResultsList(int $qid, array $answers): array {
+  $storage = $this->etm->getStorage('vote_vote');
 
-    $counts = array_fill_keys(array_map(fn($a) => $a->id(), $answers), 0);
-    if (!empty($ids)) {
-      $votes = $storage->loadMultiple($ids);
-      foreach ($votes as $v) {
-        $aid = (int) $v->get('answer')->target_id;
-        if (isset($counts[$aid])) {
-          $counts[$aid]++;
-        }
+  // Count votes per visible (published) answer.
+  $counts = array_fill_keys(array_map(fn($a) => (int) $a->id(), $answers), 0);
+
+  $ids = $storage->getQuery()
+    ->condition('question', $qid)
+    ->accessCheck(FALSE)
+    ->execute();
+
+  if (!empty($ids)) {
+    $votes = $storage->loadMultiple($ids);
+    foreach ($votes as $v) {
+      $aid = (int) $v->get('answer')->target_id;
+      if (isset($counts[$aid])) {
+        $counts[$aid]++;
       }
     }
-
-    $items = [];
-    foreach ($answers as $a) {
-      $items[] = $a->label() . ' — ' . $counts[$a->id()];
-    }
-    return $items;
   }
+
+  $total = array_sum($counts);
+  $items = [];
+
+  foreach ($answers as $a) {
+    $aid   = (int) $a->id();
+    $votes = (int) ($counts[$aid] ?? 0);
+
+    //calculate percentage
+    $pct = $total > 0 ? round(($votes / $total) * 100, 1) : 0.0;
+    $items[] = $a->label() . ' — ' . $votes . ' (' . $pct . '%)';
+  }
+
+  return $items;
+}
+
 }
